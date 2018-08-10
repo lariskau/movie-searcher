@@ -1,4 +1,18 @@
-<h1>Static#Movie</h1>
-<p>Find me in app/views/static/Movie.html.erb</p>
+<h1>SearchMovie</h1>
 
-<p> Test <%= @season = Tmdb::Season.images(1396, 1) %> fin du test</p>
+<h3>Entre le nom d'un film</h3>
+
+<%= form_tag 'movie', method: "post" do %>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>
+    <input type="text" name="name" placeholder="Le film">
+  </p>
+  <p>
+    <input type="submit" value="Tout savoir">
+  </p>
+<% end %>
+
+
+<% @movies.each do |movie| %>
+  <p>Le titre du film <%= movie.name %>, la date de sortie : <%= movie.value %></p>
+<% end %>
